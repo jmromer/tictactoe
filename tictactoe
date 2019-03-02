@@ -1,15 +1,42 @@
 #!/usr/bin/env node
+
+//
+// Determine the winner of the given tic-tac-toe game, provided as ENCODINGS,
+// a space-separated sequence of nine digits representing pieces, with spaces,
+// crosses, and naughts encoded as 0, 1, and 2, respectively. Invalid encodings
+// are ignored.
+//
+// Example:
+//
+//     % tictactoe who-wins 1 2 2 1 1 2 0 0 1
+//
+//      X  O  O
+//      X  X  O
+//      X
+//
+//     Winner: X
+
 'use strict'
 
-const importJsx = require('import-jsx')
-const { h, render } = require('ink')
-const meow = require('meow')
+const fs = require('fs')
 
-const Ui = importJsx('./src/ui')
+const program = require('commander')
+const TicTacToe = require('./src/tictactoe')
 
-const cli = meow(`
-  Usage
-    $ tictactoe
-`)
+const usage = () => {
+  const comment = new RegExp('^// ?(.*)')
 
-render(h(Ui, cli.flags))
+  fs.readFileSync(__filename)
+    .toString()
+    .split('\n')
+    .filter(line => comment.test(line))
+    .forEach(line => console.log(line.match(comment)[1]))
+}
+
+program
+  .version('0.0.1')
+  .command('who-wins <ENCODINGS...>')
+  .action(TicTacToe.whoWins)
+  .on('--help', () => usage())
+
+program.parse(process.argv)
