@@ -95,7 +95,7 @@ test('Game.winner detects secondary diagonal win', t => {
   t.is(winner, X)
 })
 
-test('Game.winner returns DRAW if a draw', t => {
+test('Game.winner sets DRAW if a draw', t => {
   const grid = [
     X, X, O,
     O, O, X,
@@ -109,7 +109,7 @@ test('Game.winner returns DRAW if a draw', t => {
   t.is(winner, Game.DRAW)
 })
 
-test('Game.winner returns INVALID if game is in inconsistent state', t => {
+test('Game.winner sets INVALID if game is in inconsistent state', t => {
   const grid = [
     X, X, O,
     O, O, O,
@@ -123,7 +123,7 @@ test('Game.winner returns INVALID if game is in inconsistent state', t => {
   t.is(winner, Game.INVALID)
 })
 
-test('Game.checkValid sets NULL winner if no win and board is empty', t => {
+test('Game.winner sets NULL winner if no win and board is empty', t => {
   const grid = [
     _, _, _,
     _, _, _,
@@ -132,12 +132,12 @@ test('Game.checkValid sets NULL winner if no win and board is empty', t => {
   const board = Board.init({ grid })
   const state = Game.init({ board })
 
-  const { winner } = Game.checkValid(state)
+  const { winner } = Game.winner(state)
 
   t.is(winner, _)
 })
 
-test('Game.checkValid sets NULL winner if no win and counts are equal', t => {
+test('Game.winner sets NULL winner if no win and counts are equal', t => {
   const grid = [
     O, _, O,
     _, X, X,
@@ -146,12 +146,12 @@ test('Game.checkValid sets NULL winner if no win and counts are equal', t => {
   const board = Board.init({ grid })
   const state = Game.init({ board })
 
-  const { winner } = Game.checkValid(state)
+  const { winner } = Game.winner(state)
 
   t.is(winner, _)
 })
 
-test('Game.checkValid sets INVALID if counts differ by more than 1', t => {
+test('Game.winner sets INVALID if counts differ by more than 1', t => {
   const grid = [
     O, _, O,
     _, X, X,
@@ -160,12 +160,12 @@ test('Game.checkValid sets INVALID if counts differ by more than 1', t => {
   const board = Board.init({ grid })
   const state = Game.init({ board })
 
-  const { winner } = Game.checkValid(state)
+  const { winner } = Game.winner(state)
 
   t.is(winner, Game.INVALID)
 })
 
-test('Game.checkValid sets INVALID if X has win and X and O have same count', t => {
+test('Game.winner sets INVALID if X has win and X and O have same count', t => {
   const grid = [
     X, O, O,
     O, X, X,
@@ -174,12 +174,12 @@ test('Game.checkValid sets INVALID if X has win and X and O have same count', t 
   const board = Board.init({ grid })
   const state = Game.init({ board })
 
-  const { winner } = Game.checkValid(state)
+  const { winner } = Game.winner(state)
 
   t.is(winner, Game.INVALID)
 })
 
-test('Game.checkValid sets INVALID if O has win and X does not have same count', t => {
+test('Game.winner sets INVALID if O has win and X does not have same count', t => {
   const grid = [
     O, X, X,
     _, O, X,
@@ -188,12 +188,12 @@ test('Game.checkValid sets INVALID if O has win and X does not have same count',
   const board = Board.init({ grid })
   const state = Game.init({ board })
 
-  const { winner } = Game.checkValid(state)
+  const { winner } = Game.winner(state)
 
   t.is(winner, Game.INVALID)
 })
 
-test('Game.checkValid sets INVALID if both X and O have wins', t => {
+test('Game.winner sets INVALID if both X and O have wins', t => {
   const grid = [
     O, X, _,
     O, X, _,
@@ -202,7 +202,7 @@ test('Game.checkValid sets INVALID if both X and O have wins', t => {
   const board = Board.init({ grid })
   const state = Game.init({ board })
 
-  const { winner } = Game.checkValid(state)
+  const { winner } = Game.winner(state)
 
   t.is(winner, Game.INVALID)
 })

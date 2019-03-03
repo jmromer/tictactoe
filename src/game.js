@@ -16,21 +16,11 @@ const init = ({ winner, board = null } = {}) => ({
 })
 
 // Determine if the given game has a winner, is a draw, or is invalid.
+//
+// If the game is in an invalid state, set winner as INVALID.
+//
 // Return the updated game state object.
 const winner = game => {
-  game = checkValid(game)
-
-  if (game.winner === NULL && Board.isFull(game.board)) {
-    return { ...game, winningSequence: [], winner: DRAW }
-  }
-
-  return game
-}
-
-// Determine if the given board is in a valid state.
-// Requires searching for win states for each player.
-// Return the updated game state object.
-const checkValid = game => {
   const counts = pieceCounts(game.board)
   const diff = counts[PLAYER_1] - counts[PLAYER_2]
 
@@ -50,6 +40,10 @@ const checkValid = game => {
   // Check if player 2 has a win
   if (game.winner === PLAYER_2) {
     return diff === 0 ? game : invalidate(game)
+  }
+
+  if (game.winner === NULL && Board.isFull(game.board)) {
+    return { ...game, winningSequence: [], winner: DRAW }
   }
 
   return game
@@ -99,7 +93,6 @@ const invalidate = game => {
 module.exports = {
   init,
   winner,
-  checkValid,
   INVALID,
   NULL,
   PLAYER_1,

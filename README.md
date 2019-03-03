@@ -149,14 +149,14 @@ npm test
   ✔ game › Game.winner detects horizontal wins
   ✔ game › Game.winner detects main diagonal win
   ✔ game › Game.winner detects secondary diagonal win
-  ✔ game › Game.winner returns DRAW if a draw
-  ✔ game › Game.winner returns INVALID if game is in inconsistent state
-  ✔ game › Game.checkValid sets NULL winner if no win and board is empty
-  ✔ game › Game.checkValid sets NULL winner if no win and counts are equal
-  ✔ game › Game.checkValid sets INVALID if counts differ by more than 1
-  ✔ game › Game.checkValid sets INVALID if X has win and X and O have same count
-  ✔ game › Game.checkValid sets INVALID if O has win and X does not have same count
-  ✔ game › Game.checkValid sets INVALID if both X and O have wins
+  ✔ game › Game.winner sets DRAW if a draw
+  ✔ game › Game.winner sets INVALID if game is in inconsistent state
+  ✔ game › Game.winner sets NULL winner if no win and board is empty
+  ✔ game › Game.winner sets NULL winner if no win and counts are equal
+  ✔ game › Game.winner sets INVALID if counts differ by more than 1
+  ✔ game › Game.winner sets INVALID if X has win and X and O have same count
+  ✔ game › Game.winner sets INVALID if O has win and X does not have same count
+  ✔ game › Game.winner sets INVALID if both X and O have wins
 
   24 tests passed
 ```
