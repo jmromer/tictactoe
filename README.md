@@ -30,7 +30,7 @@ Usage
 -----
 
 ```text
-% tictactoe who-wins --help
+% ./tictactoe who-wins --help
 Usage: who-wins [options] <ENCODINGS...>
 
 Options:
@@ -43,7 +43,7 @@ are ignored.
 
 Example:
 
-    % tictactoe who-wins 1 2 2 1 1 2 0 0 1
+    ./tictactoe who-wins 1 2 2 1 1 2 0 0 1
 
      X  O  O
      X  X  O
@@ -58,7 +58,7 @@ Examples
 ### Player 2 wins
 
 ```text
-% tictactoe who-wins 2 0 1 1 2 0 1 0 2
+./tictactoe who-wins 2 0 1 1 2 0 1 0 2
 
   O     X
   X  O
@@ -70,7 +70,7 @@ Examples
 ### Draw
 
 ```text
-% tictactoe who-wins 1 1 2 2 2 1 1 1 2
+./tictactoe who-wins 1 1 2 2 2 1 1 1 2
 
   X  X  O
   O  O  X
@@ -80,24 +80,23 @@ Examples
  Game is a draw.
 ```
 
-
 ### Incomplete game
 
 ```text
-% tictactoe who-wins 1 2 2 1 1 2 0 0 0
+./tictactoe who-wins 1 2 2 1 1 2 0 0 0
 
   X  O  O
   X  X  O
 
 
- Winner:
+ Winner: None
  Game is incomplete.
 ```
 
 ### Invalid state
 
 ```text
-% tictactoe who-wins 1 2 2 1 1 2 1 1 1
+./tictactoe who-wins 1 2 2 1 1 2 1 1 1
 
   X  O  O
   X  X  O
@@ -110,7 +109,7 @@ Examples
 ### Invalid input
 
 ```text
-% tictactoe who-wins 1 3 2 0
+./tictactoe who-wins 1 3 2 0
 Error: Nine valid ENCODINGS required. Given: 1 2 0
 ```
 
