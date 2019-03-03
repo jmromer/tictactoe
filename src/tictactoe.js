@@ -35,13 +35,12 @@ const parseEncodings = encodings => {
 // Private: Print the state of the given game, including a graphical
 // representation of the board with winning sequence highlighted, if any.
 const printGameState = ({ board, winner, winningSequence }) => {
-  console.log()
-
   Board.rows(board)
     .map(row => row.map(cell => gridCellGraphic(cell, winningSequence)))
     .forEach(row => console.log(`  ${row.join('  ')}  `))
 
-  const winningPlayer = VALID_ENCODINGS[winner] || 'None'
+  const piece = VALID_ENCODINGS[winner]
+  const winningPlayer = !piece || piece === ' ' ? 'None' : piece
 
   console.log(`\n Winner: ${winningPlayer}`)
 
