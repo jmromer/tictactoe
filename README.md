@@ -22,7 +22,6 @@ tictactoe
     - [Coverage](#coverage)
 
 
-
 Usage
 -----
 
@@ -117,14 +116,52 @@ Dependencies
 
 ```text
 asdf install nodejs 11.7.0
-npm install --production
+npm install
 ```
 
 Running tests
 -------------
 
+### End-to-end tests
+
+```
+npm run e2e
+```
+
 ```text
-npm install
+> Scenario: X wins
+  ./tictactoe who-wins 1 2 2 1 1 2 0 0 1
+  ✔Pass
+
+
+> Scenario: O wins
+  ./tictactoe who-wins 2 0 1 1 2 0 1 0 2
+  ✔Pass
+
+
+> Scenario: Draw
+  ./tictactoe who-wins 1 1 2 2 2 1 1 1 2
+  ✔Pass
+
+
+> Scenario: Incomplete Game
+  ./tictactoe who-wins 1 2 2 1 1 2 0 0 0
+  ✔Pass
+
+
+> Scenario: Invalid state
+  ./tictactoe who-wins 1 2 2 1 1 2 1 1 1
+  ✔Pass
+
+
+> Scenario: Invalid input
+  ./tictactoe who-wins 1 3 2 0
+  ✔Pass
+```
+
+### Unit and integration tests
+
+```text
 npm test
 ```
 
