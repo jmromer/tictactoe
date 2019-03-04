@@ -60,7 +60,7 @@ const hasWin = (game, player) => {
       continue
     }
 
-    if (winner === NULL) {
+    if (winner === NULL || winner === player) {
       return { ...game, winningSequence: sequence, winner: player }
     }
 
