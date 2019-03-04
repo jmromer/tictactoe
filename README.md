@@ -8,22 +8,19 @@ tictactoe
 
 > A command-line tic-tac-toe game state checker
 
-<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
 **Table of Contents**
 
-- [tictactoe](#tictactoe)
-    - [Usage](#usage)
-    - [Examples](#examples)
-        - [Player 2 wins](#player-2-wins)
-        - [Draw](#draw)
-        - [Incomplete game](#incomplete-game)
-        - [Invalid state](#invalid-state)
-        - [Invalid input](#invalid-input)
-    - [Dependencies](#dependencies)
-    - [Running tests](#running-tests)
-        - [Coverage](#coverage)
+- [Usage](#usage)
+- [Examples](#examples)
+    - [Player 2 wins](#player-2-wins)
+    - [Draw](#draw)
+    - [Incomplete game](#incomplete-game)
+    - [Invalid state](#invalid-state)
+    - [Invalid input](#invalid-input)
+- [Dependencies](#dependencies)
+- [Running tests](#running-tests)
+    - [Coverage](#coverage)
 
-<!-- markdown-toc end -->
 
 
 Usage
@@ -47,7 +44,7 @@ Example:
 
      X  O  O
      X  X  O
-     X
+           X
 
     Winner: X
 ```
