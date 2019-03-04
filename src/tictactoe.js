@@ -35,8 +35,10 @@ const parseEncodings = encodings => {
 // Private: Print the state of the given game, including a graphical
 // representation of the board with winning sequence highlighted, if any.
 const printGameState = ({ board, winner, winningSequence }) => {
+  const winningSequenceSet = new Set(winningSequence.map(e => e.index))
+
   Board.rows(board)
-    .map(row => row.map(cell => gridCellGraphic(cell, winningSequence)))
+    .map(row => row.map(cell => gridCellGraphic(cell, winningSequenceSet)))
     .forEach(row => console.log(`  ${row.join('  ')}  `))
 
   const piece = VALID_ENCODINGS[winner]
@@ -58,15 +60,16 @@ const printGameState = ({ board, winner, winningSequence }) => {
 }
 
 // Private: Return a graphical representation of the given grid cell object.
-// If the cell is part of a winning sequence, color it as appropriate.
-const gridCellGraphic = ({ index, value }, winningSequence) => {
+// If the cell is part of a winning sequence (passed as a Set of 1-D indices),
+// color it as appropriate.
+const gridCellGraphic = ({ index, value }, winningSequenceSet) => {
   const player = VALID_ENCODINGS[value]
 
-  if (winningSequence.length === 0) {
+  if (winningSequenceSet.size === 0) {
     return colors.yellow(player)
   }
 
-  return winningSequence.map(e => e.index).includes(index)
+  return winningSequenceSet.has(index)
     ? colors.green(player)
     : colors.grey(player)
 }
