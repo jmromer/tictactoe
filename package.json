@@ -13,7 +13,8 @@
 		"node": ">=6"
 	},
 	"scripts": {
-		"test": "nyc ava -v"
+		"test": "nyc ava -v",
+    "e2e": "bash test/cli_test.sh"
 	},
 	"dependencies": {
 		"@babel/polyfill": "^7.2.5",
