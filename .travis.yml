@@ -1,3 +1,16 @@
 language: node_js
+
 node_js:
   - 'node'
+
+cache: npm
+
+before_install:
+  - sudo apt-get install -y realpath
+
+addons:
+  apt:
+    update: true
+
+script:
+  - npm run e2e && npm test
